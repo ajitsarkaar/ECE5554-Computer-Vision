@@ -1,0 +1,4 @@
+Question 9 mean values for Red, Green and Blue:
+Red: 129.5622
+Green: 119.0114
+Blue: 97.7523

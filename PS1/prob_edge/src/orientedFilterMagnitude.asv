@@ -1,0 +1,22 @@
+function [mag, theta] = orientedFilterMagnitude(im, sigma)
+
+if si
+sigma_long = 3;
+sigma_short = 1;
+
+thetas = -pi/2:pi/8:7*pi/8;
+for t = 1:numel(thetas)
+  fil(:, :, t) = orientedEdgeFilter(sigma_long, sigma_short, thetas(t));
+  
+
+function fil = orientedEdgeFilter(sigma_long, sigma_short, theta)
+
+sigmax = sigma_long;
+sigmay = sigma_short;
+
+filx = -sigmax*3:sigmax*3;
+fily = -sigmax*3:sigmax*3;
+fil = exp(-(filx.^2./sigmax.^2 + fily.^2./sigmay.^2)/2);
+fil = fil ./ sum(fil(:));
+
+fil = imrotate(fil, theta, 'bilinear');
